@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MLBB Draft Assistant</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="tb-team blue"><div class="tname" id="nameB">BLUE</div><div class="bans" id="bansB"></div></div>
+    <div class="tb-mid">
+      <div class="phase-label" id="phaseLabel"></div>
+      <div class="timer" id="timer">30</div>
+    </div>
+    <div class="tb-team red"><div class="tname" id="nameR">RED</div><div class="bans" id="bansR"></div></div>
+  </header>
+
+  <div class="scorebar" id="scorebar"></div>
+
+  <div class="settings">
+    <span class="meta" id="metaInfo"></span>
+    <label>Tim kamu <select id="mySide"><option value="B">Blue</option><option value="R">Red</option></select></label>
+    <label>First pick <select id="firstPick"><option value="B">Blue</option><option value="R">Red</option></select></label>
+    <label>Rank <select id="banCount"><option value="3">Epic · 3 ban/tim</option><option value="4" selected>Legend · 4 ban/tim</option><option value="5">Mythic+ · 5 ban/tim</option></select></label>
+    <button id="undo">Undo</button>
+    <button id="reset">Reset</button>
+  </div>
+
+  <div class="stage">
+    <div class="col blue" id="colB"></div>
+
+    <section class="center">
+      <div class="tabs" id="roleFilters"></div>
+      <input id="search" type="search" placeholder="Cari hero...">
+      <div id="grid" class="grid"></div>
+      <div class="confirm-row">
+        <div class="preview" id="preview"></div>
+        <button id="confirm" class="confirm" disabled>PILIH HERO</button>
+      </div>
+    </section>
+
+    <div class="col red" id="colR"></div>
+  </div>
+
+  <section class="dock">
+    <div class="dock-tabs">
+      <button class="dt on" data-d="sug" id="dtSug">Suggestion</button>
+      <button class="dt" data-d="an">Analisa tim</button>
+      <button class="dt" data-d="bd">Build &amp; Spell</button>
+    </div>
+    <div class="dock-ctl" id="dockCtl">
+      <span>Meta</span><input type="range" id="bias" min="0" max="100" value="50"><span>Counter</span>
+      <label><input type="checkbox" id="biasAuto" checked> Otomatis (makin berat ke counter saat musuh sudah pick)</label>
+    </div>
+    <div id="dockTips" class="dock-tips"></div>
+    <div id="dockSug" class="dock-body"></div>
+    <div id="dockAn" class="dock-body" hidden></div>
+    <div id="dockBdCtl" class="dock-ctl" hidden>
+      <label>Lihat build tim <select id="bdTeam"><option value="me">Tim kamu</option><option value="enemy">Lawan</option></select></label>
+      <span>Item situasional muncul setelah lawan punya minimal 2 pick.</span>
+    </div>
+    <div id="dockBd" class="dock-body" hidden></div>
+  </section>
+</div>
+
+<script src="data.js"></script>
+<script src="meta-data.js"></script>
+<script src="engine.js"></script>
+<script src="builds.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
